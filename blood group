@@ -1,0 +1,102 @@
+#include<iostream>
+#include<string.h>
+#include<exception>
+using namespace std;
+
+class Information
+{
+    private:
+       string name;
+       string dob;
+       string bloodgrp;
+       string contact_address;
+       string phone_no;
+       string driving_lis;
+
+    public:
+      Information()
+      {
+        this->name="";
+        this->dob="";
+        this->bloodgrp="";
+        this->contact_address="";
+        this->phone_no="";
+        this->driving_lis="";
+      }
+
+      Information(Information &other)
+      {
+        this->name=other.name;
+        this->dob=other.dob;
+        this->bloodgrp=other.bloodgrp;
+        this->contact_address=other.contact_address;
+        this->phone_no=other.phone_no;
+        this->driving_lis=other.driving_lis;
+      }
+
+      ~Information()
+      {
+        cout<<"memory deallocated!";
+      }
+
+      void display()
+      {
+        cout<<"\n\nInformation Details:\n";
+        cout << "Name: " << name << endl;
+        cout << "Date of Birth: " << dob << endl;
+        cout << "Blood Group: " << bloodgrp << endl; 
+        cout << "Contact Address: " << contact_address << endl;
+        cout << "Telephone Number: " << phone_no << endl;
+        cout << "Driving license Number: " << driving_lis << endl;
+
+      }
+
+      friend class Data;
+
+
+};
+
+class Data
+{
+    public:
+      void getData(Information &info)
+      {
+         cout << "Enter student Name: "; 
+        cin >> info.name;
+
+        cout << "Enter student date of birth: "; 
+        cin >> info.dob;
+
+        cout << "Enter student blood group: "; 
+        cin >> info.bloodgrp;
+
+        cout << "Enter student contact address: "; 
+        cin >> info.contact_address;  
+
+        cout << "Enter student phone number: "; 
+        cin >> info.phone_no; 
+
+        cout << "Enter student driving license number: "; 
+        cin >> info.driving_lis;
+      }
+
+};
+
+int main()
+{
+    try
+    {
+        Information *info1=new Information();
+        Data data1;
+
+        data1.getData(*info1);
+        info1->display();
+
+        delete info1;
+
+    }
+    catch (exception &e)
+    {
+        cerr<<e.what()<<endl;
+    }
+}
