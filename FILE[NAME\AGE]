@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     char data[100];
 
-    // Open a file in write mode.
+   
     ofstream outfile;
     outfile.open("afile.dat");
     if (!outfile) {
@@ -17,20 +17,20 @@ int main() {
     cout << "Enter your name: ";
     cin.getline(data, 100);
 
-    // Write inputted data into the file.
+   
     outfile << data << endl;
 
     cout << "Enter your age: ";
     cin >> data;
     cin.ignore();
 
-    // Again, write inputted data into the file.
+    
     outfile << data << endl;
 
-    // Close the opened file.
+    
     outfile.close();
 
-    // Open a file in read mode.
+  
     ifstream infile;
     infile.open("afile.dat");
     if (!infile) {
@@ -40,12 +40,12 @@ int main() {
 
     cout << "Reading from the file" << endl;
 
-    // Read and display each line from the file.
+  
     while (infile.getline(data, 100)) {
         cout << data << endl;
     }
 
-    // Close the opened file.
+   
     infile.close();
 
     return 0;
