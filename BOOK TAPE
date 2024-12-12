@@ -6,7 +6,7 @@ using namespace std;
 
 
 class publication 
-{	                        	// Base class	
+{	                        	
 	protected:
 		string title;
 		float price;
@@ -17,7 +17,7 @@ class publication
 
 
 class books: public publication
-{                                   // Derived class 1 books
+{                                   
     int pages;
     
     public:
@@ -27,7 +27,7 @@ class books: public publication
 };
 
 
-// Derived class2 tape
+
 class tape:public publication 
 {
     float min;
@@ -42,7 +42,7 @@ class tape:public publication
 
 
 
-void books :: getb() 	// member function of derived class 1 books
+void books :: getb() 	
 {
     cout<<"Enter the details of the book:"<<endl;
     cout<<"Enter the title of the book:"<<flush;
@@ -77,7 +77,7 @@ void books :: getb() 	// member function of derived class 1 books
 
 
 
-void books::displayb()		//member function of derived class1 books
+void books::displayb()		
     {
         cout<<"The book you entered is:"<<endl;
         cout<<"The entered title is :"<<title<<endl;
