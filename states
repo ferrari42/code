@@ -1,0 +1,35 @@
+#include <iostream>
+#include <map>
+#include <string>
+using namespace std;
+
+int main() {
+    typedef map<string, int> maptype;
+    maptype state;
+
+    state.insert(pair<string, int>("Maharashtra", 123456));
+    state.insert(pair<string, int>("Goa", 456123));
+    state.insert(pair<string, int>("Kerela", 456789));
+    state.insert(pair<string, int>("Gujrat", 159357));
+
+    maptype::iterator iter;
+    cout << "-------------Population of states in India--------------" << endl;
+    for(iter =  state.begin(); iter!= state.end(); iter++){
+        cout<<iter->first<<": "<<iter->second<<endl;
+    }
+    cout<<"------States------"<<endl;
+    cout << "The number of state entries are: " << state.size() << endl;
+    string name;
+    cout << "Enter name of state: " << endl;
+    cin >> name;
+
+    iter = state.find(name);
+    if (iter != state.end()) {
+        cout << name << ": " << iter->second << endl;
+    } else {
+        cout << "State not found" << endl;
+    }
+
+    state.clear();
+    return 0;
+}
