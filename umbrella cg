@@ -1,0 +1,87 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Base class for drawable objects
+class Drawable {
+public:
+    virtual void draw() const = 0;  // Pure virtual function for drawing
+    virtual ~Drawable() {}
+};
+
+// Class for the Man
+class Man : public Drawable {
+public:
+    void draw() const override {
+        cout << "   O   \n";
+        cout << "  /|\\  \n";
+        cout << "  / \\  \n";
+        cout << "A man walking." << endl;
+    }
+};
+
+// Class for the Umbrella
+class Umbrella : public Drawable {
+public:
+    void draw() const override {
+        cout << "   ____\n";
+        cout << "  /    \\ \n";
+        cout << " /______\\ \n";
+        cout << "   |||| \n";
+        cout << "Umbrella to protect from rain." << endl;
+    }
+};
+
+// Class for Raindrop
+class Raindrop : public Drawable {
+public:
+    void draw() const override {
+        cout << "   .   \n";
+        cout << "Raindrop falling." << endl;
+    }
+};
+
+// Class to manage the scene, such as the man walking and the umbrella
+class Scene {
+private:
+    vector<Drawable*> objects;
+
+public:
+    void addObject(Drawable* obj) {
+        objects.push_back(obj);
+    }
+
+    void drawScene() const {
+        for (const auto& obj : objects) {
+            obj->draw();
+        }
+    }
+
+    ~Scene() {
+        // Clean up dynamically allocated memory
+        for (auto obj : objects) {
+            delete obj;
+        }
+    }
+};
+
+int main() {
+    // Create the scene
+    Scene scene;
+
+    // Create objects
+    Man* man = new Man();
+    Umbrella* umbrella = new Umbrella();
+    Raindrop* raindrop = new Raindrop();
+
+    // Add objects to the scene
+    scene.addObject(man);
+    scene.addObject(umbrella);
+    scene.addObject(raindrop);
+
+    // Draw the scene
+    cout << "Drawing the scene (Man walking in the rain with an umbrella):" << endl;
+    scene.drawScene();
+
+    return 0;
+}
